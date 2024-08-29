@@ -2,6 +2,7 @@ const express = require("express")
 const cep_endereco = require("./middlewares/cep_endereco.js")
 const cliente_controller = require("./controllers/cliente.js")
 const usuario_controller = require("./controllers/usuario.js")
+const rede_controller = require("./controllers/rede.js")
 const app = express()
 const port = 5000
 
@@ -61,6 +62,31 @@ app.delete("/usuario/:id", (req, res) => {
     res.json()
 })
 // FIM DO GERENCIAMENTO DO USUARIO
+
+// GERENCIAMENTO DE REDE
+app.get("/rede", (req, res) => {
+    res.json(rede_controller.index())
+})
+
+app.get("/rede", (req, res) => {
+    res.json(rede_controller.show(req.params.id))
+})
+
+app.post("/rede", (req, res) => {
+    const code = rede_controller.store(req.body)
+    res.status(code).json()
+})
+
+app.put("/rede/:id", (req, res) => {
+    const code = rede_controller.update(req.body, req.params.id)
+    res.status(code).json()
+})
+
+app.delete("/rede/:id", (req, res) => {
+    rede_controller.destroy(req.params.id)
+    res.json()
+})
+// FIM DO GERENCIAMENTO DE REDE
 
 // PORTA
 app.listen(port, () => {
