@@ -1,7 +1,7 @@
 const express = require("express")
 const cep_endereco = require("./middlewares/cep_endereco.js")
 const cliente_controller = require("./controllers/cliente.js")
-const barbeiro_controller = require("./controllers/barbeiro.js")
+const usuario_controller = require("./controllers/usuario.js")
 const app = express()
 const port = 5000
 
@@ -37,30 +37,30 @@ app.delete("/cliente/:id", (req, res) => {
 })
 // FIM DO GERENCIAMENTO DE CLIENTE
 
-// GERENCIAMENTO DO BARBEIRO
-app.get("/barbeiro", (req, res) => {
-    res.json(barbeiro_controller.index())
+// GERENCIAMENTO DO USUARIO
+app.get("/usuario", (req, res) => {
+    res.json(usuario_controller.index())
 })
 
-app.get("/barbeiro", (req, res) => {
-    res.json(barbeiro_controller.show(req.params.id))
+app.get("/usuario", (req, res) => {
+    res.json(usuario_controller.show(req.params.id))
 })
 
-app.post("/barbeiro", (req, res) => {
-    const code = barbeiro_controller.store(req.params.body)
+app.post("/usuario", (req, res) => {
+    const code = usuario_controller.store(req.body)
     res.status(code).json()
 })
 
-app.put("/barbeiro/:id", (req, res) => {
-    const code = barbeiro_controller.update(req.body, req.params.id)
+app.put("/usuario/:id", (req, res) => { 
+    const code = usuario_controller.update(req.body, req.params.id)
     res.status(code).json()
 })
 
-app.delete("/barbeiro/:id", (req, res) => {
-    barbeiro_controller.destroy(req.params.id)
+app.delete("/usuario/:id", (req, res) => {
+    usuario_controller.destroy(req.params.id)
     res.json()
 })
-// FIM DO GERENCIAMENTO DO BARBEIRO
+// FIM DO GERENCIAMENTO DO USUARIO
 
 // PORTA
 app.listen(port, () => {
