@@ -1,5 +1,5 @@
 const redes = [];
-const usuario_controller = require("./usuario.js")
+const usuario_controller = require("./usuario.js");
 let proxId = 1;
 
 const model = (body, id = proxId++) => {
@@ -11,7 +11,7 @@ const model = (body, id = proxId++) => {
     return {
       id,
       nome: body.nome,
-      usuario_id: body.usuario_id
+      usuario_id: body.usuario_id,
     };
   }
 };
