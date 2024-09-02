@@ -14,7 +14,7 @@ const validarServicos = (servicos) =>
 const duracao = servicos => {
     let soma = 0
     servicos.forEach(servico => {
-        spma += servico_controller.show()
+        soma += servico_controller.show()
     });
 }
 const model = (body, id = nextId++) => {
