@@ -1,20 +1,6 @@
-const redes = [];
-const usuario_controller = require("./usuario.js");
-let proxId = 1;
+const model = require("../models/rede.js")
 
-const model = (body, id = proxId++) => {
-  if (
-    body.nome != undefined &&
-    body.nome != "" &&
-    usuario_controller.show(body.usuario_id)
-  ) {
-    return {
-      id,
-      nome: body.nome,
-      usuario_id: body.usuario_id,
-    };
-  }
-};
+const redes = [];
 
 const store = (body) => {
   let novo = model(body);

@@ -1,22 +1,6 @@
-const usuarios = [];
-let proxId = 1;
+const model = require("../models/usuario.js")
 
-const model = (body, id = proxId++) => {
-  if (
-    body.email != "" &&
-    body.email != undefined &&
-    body.email.includes("@") &&
-    body.senha != "" &&
-    body.senha != undefined &&
-    body.senha.length >= 8
-  ) {
-    return {
-      id,
-      email: body.email,
-      senha: body.senha,
-    };
-  }
-};
+const usuarios = [];
 
 const store = (body) => {
   let novo = model(body);
